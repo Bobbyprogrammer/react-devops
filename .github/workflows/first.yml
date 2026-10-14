@@ -27,6 +27,6 @@ jobs:
         run: npm run lint
 
       - name: RUn Test Cases
-         run: npm run test  
+        run: npm run test
       - name: Create build
         run: npm run build
