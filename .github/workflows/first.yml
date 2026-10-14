@@ -30,3 +30,10 @@ jobs:
         run: npm run test
       - name: Create build
         run: npm run build
+
+      - name: Create Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: /dist
+          retention-days: 5
