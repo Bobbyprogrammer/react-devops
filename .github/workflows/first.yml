@@ -72,3 +72,15 @@ jobs:
           name: build-artifact
           path: dist/
           retention-days: 5
+  deploy-job:
+    needs: [lint-job, test-job, build-job]
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        run: vercel --prod --yes --token="${{ secrets.VERCEL_TOKEN }}"
